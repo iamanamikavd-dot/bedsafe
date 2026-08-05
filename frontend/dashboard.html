@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BedSafe | Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =========================
+            SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+
+                <i class="fa-solid fa-bed"></i>
+
+                <div>
+
+                    <h1>BedSafe</h1>
+
+                    <p>Pressure Ulcer Prevention</p>
+
+                </div>
+
+            </div>
+
+            <nav>
+
+                <a href="dashboard.html" class="active">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+
+                <a href="patients.html">
+        <i class="fa-solid fa-user-plus"></i>
+        Add Patient
+    </a>
+     <a href="view-patients.html">
+        <i class="fa-solid fa-user-group"></i>
+        View Patients
+    </a>
+
+                <a href="monitoring.html">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    Live Monitoring
+                </a>
+
+                <a href="alerts.html">
+                    <i class="fa-solid fa-bell"></i>
+                    Alert History
+                </a>
+
+                <a href="settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+
+            </nav>
+
+        </div>
+
+        <!-- System Status -->
+
+        <div class="system-status">
+
+            <h3>System Status</h3>
+
+            <div class="status-item">
+                <i class="fa-solid fa-circle-check"></i>
+                Firebase Connected
+            </div>
+
+            <div class="status-item">
+                <i class="fa-solid fa-circle-check"></i>
+                ESP32 Connected
+            </div>
+
+            <div class="status-item">
+                <i class="fa-solid fa-circle-check"></i>
+                Sensors Active
+            </div>
+
+            <div class="status-item">
+                <i class="fa-solid fa-circle-check"></i>
+                Monitoring Running
+            </div>
+
+            <button id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- =========================
+            MAIN CONTENT
+    ========================== -->
+
+    <main class="content">
+
+        <!-- Top Navigation -->
+
+        <header class="topbar">
+
+            <div class="top-left">
+
+                <i class="fa-solid fa-bars"></i>
+
+                <h2>Dashboard</h2>
+
+            </div>
+
+            <div class="top-right">
+
+                <div class="notification">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="badge">2</span>
+
+                </div>
+
+                <div class="profile">
+
+                    <img src="images/profile.png" alt="Profile">
+
+                    <span id="userName">Anamika</span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- Welcome Banner -->
+
+        <section class="welcome-card">
+
+            <div class="welcome-text">
+
+                <h3>Welcome back,</h3>
+
+                <h1 id="welcomeName">
+                    Anamika 👋
+                </h1>
+
+                <p>
+                    Monitor your home patients and
+                    prevent pressure ulcers.
+                </p>
+
+            </div>
+
+            <div class="welcome-image">
+
+                <img src="images/welcome-banner.png"
+                     alt="Welcome Banner">
+
+            </div>
+
+            <div class="today">
+
+                <i class="fa-regular fa-calendar"></i>
+
+                <span>Thursday</span>
+
+                <h2>31 July 2026</h2>
+
+            </div>
+
+        </section>
+
+        <!-- Statistics Cards Start Here -->
+         <!-- ==========================================
+        STATISTICS CARDS
+========================================== -->
+
+<section class="stats-grid">
+
+    <div class="stat-card" onclick="window.location.href='view-patients.html'" id="totalPatientsCard">
+
+        <div class="stat-icon green">
+            <i class="fa-solid fa-user-group"></i>
+        </div>
+
+        <div class="stat-info">
+            <h2 id="totalPatients">1</h2>
+            <p>Total Patients</p>
+            <span>Registered patient(s)</span>
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="stat-icon blue">
+            <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+
+        <div class="stat-info">
+            <h2 id="monitoringPatients">1</h2>
+            <p>Patients Monitoring</p>
+            <span>Currently active</span>
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="stat-icon orange">
+            <i class="fa-solid fa-bed"></i>
+        </div>
+
+        <div class="stat-info">
+            <h2 id="repositionPatients">0</h2>
+            <p>Need Reposition</p>
+            <span>Immediate attention</span>
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="stat-icon red">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div class="stat-info">
+            <h2 id="todayAlerts">0</h2>
+            <p>Today's Alerts</p>
+            <span>Generated today</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+        MAIN DASHBOARD
+========================================== -->
+
+<section class="dashboard-grid">
+
+    <!-- LEFT COLUMN -->
+
+    <div class="left-panel">
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>Patient Monitoring Overview</h2>
+
+                <button class="view-btn" onclick="window.location.href='view-patients.html'">
+    View All
+</button>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Patient</th>
+                        <th>Position</th>
+                        <th>Duration</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="patientTable">
+
+                    <tr>
+
+                        <td>Patient A</td>
+
+                        <td>Left Side</td>
+
+                        <td>01:20:15</td>
+
+                        <td>
+
+                            <span class="safe">
+                                Safe
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                           <button class="table-btn" onclick="window.location.href='view-patients.html'">
+    View
+</button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+
+    <div class="right-panel">
+
+        <!-- LIVE STATUS -->
+
+        <div class="card" onclick="window.location.href='monitoring.html'" style="cursor:pointer;">
+            <div class="card-header">
+
+                <h2>Live Patient Status</h2>
+
+            </div>
+
+            <div class="live-card">
+
+                <div class="circle">
+
+                    <span>70%</span>
+
+                </div>
+
+                <h3>Patient A</h3>
+
+                <p>Current Position</p>
+
+                <strong>Left Side</strong>
+
+                <hr>
+
+                <div class="live-info">
+
+                    <div>
+
+                        <small>Pressure</small>
+
+                        <h4>Normal</h4>
+
+                    </div>
+
+                    <div>
+
+                        <small>Duration</small>
+
+                        <h4>01:20:15</h4>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RECENT ALERTS -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>Recent Alerts</h2>
+
+            </div>
+
+            <div class="alert-item">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <div>
+
+                    <strong>Patient A</strong>
+
+                    <p>Reposition required.</p>
+
+                </div>
+
+            </div>
+
+            <div class="alert-item">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <div>
+
+                    <strong>Monitoring</strong>
+
+                    <p>System working normally.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>Quick Actions</h2>
+
+            </div>
+
+            <div class="quick-actions">
+
+    <button onclick="window.location.href='patients.html'">
+    <i class="fa-solid fa-user-plus"></i>
+    Add Patient
+</button>
+
+    <button onclick="window.location.href='view-patients.html'">
+        <i class="fa-solid fa-user-group"></i>
+        View Patients
+    </button>
+
+    <button onclick="window.location.href='monitoring.html'">
+        <i class="fa-solid fa-heart-pulse"></i>
+        Live Monitoring
+    </button>
+
+    <button onclick="window.location.href='alerts.html'">
+        <i class="fa-solid fa-bell"></i>
+        Alert History
+    </button>
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+        FOOTER
+========================================== -->
+
+<footer>
+
+    <p>
+
+        © 2026 BedSafe |
+        IoT-Based Pressure Ulcer Prevention &
+        Patient Repositioning Alert System
+
+    </p>
+
+</footer>
+
+    </main>
+
+</div>
+
+<script type="module" src="js/dashboard.js"></script>
+
+</body>
+</html>

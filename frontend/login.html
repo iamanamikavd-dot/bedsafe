@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BedSafe | Login</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<div class="logo-icon">
+<i class="fa-solid fa-bed-pulse"></i>
+</div>
+
+<div>
+<h2>BedSafe</h2>
+<p>SMART CARE. BETTER LIFE.</p>
+</div>
+
+</div>
+
+<div class="nav-links">
+<a href="home.html">Home</a>
+<a href="#">Features</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</div>
+
+<div class="nav-btns">
+<a href="register.html" class="register-btn">Register</a>
+</div>
+
+</nav>
+
+</header>
+
+<!-- ================= MAIN ================= -->
+
+<section class="login-section">
+
+<div class="left-side">
+
+<span class="tag">
+WELCOME BACK
+</span>
+
+<h1>
+Welcome <span>Back</span>
+</h1>
+
+<p>
+Login to continue monitoring patients,
+receive smart reposition alerts,
+and provide better care every day.
+</p>
+
+<div class="bed-image">
+
+<img src="images/login-bed.svg"
+alt="BedSafe">
+
+</div>
+
+<div class="feature-box">
+
+<div class="feature">
+
+<i class="fa-solid fa-shield-heart"></i>
+
+<div>
+<h4>Secure</h4>
+<p>Encrypted Login</p>
+</div>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-bell"></i>
+
+<div>
+<h4>Real-time</h4>
+<p>Instant Alerts</p>
+</div>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-cloud"></i>
+
+<div>
+<h4>Cloud</h4>
+<p>Realtime Sync</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= RIGHT ================= -->
+
+<div class="login-card">
+
+<h2>Hello Again!</h2>
+
+<p>Login to your BedSafe account</p>
+
+<form id="loginForm">
+
+<div class="input-box">
+
+<label>Email Address</label>
+
+<div class="input-field">
+
+<i class="fa-regular fa-envelope"></i>
+
+<input
+type="email"
+id="email"
+placeholder="caregiver@example.com"
+required>
+
+</div>
+
+</div>
+
+<div class="input-box">
+
+<label>Password</label>
+
+<div class="input-field">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="password"
+placeholder="Enter Password"
+required>
+
+<span id="togglePassword">
+
+<i class="fa-regular fa-eye"></i>
+
+</span>
+
+</div>
+
+</div>
+
+<div class="options">
+
+<label>
+
+<input type="checkbox">
+
+Remember Me
+
+</label>
+
+<a href="#" id="forgotPassword">
+Forgot Password?
+</a>
+
+</div>
+
+<button type="submit">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+
+Log In Securely
+
+</button>
+
+<div class="divider">
+
+<span>or continue with</span>
+
+</div>
+
+<div class="social-login">
+
+<button type="button">
+
+<i class="fa-brands fa-google"></i>
+
+Google
+
+</button>
+
+<button type="button">
+
+<i class="fa-brands fa-microsoft"></i>
+
+Microsoft
+
+</button>
+
+</div>
+
+<div class="signup">
+
+Don't have an account?
+
+<a href="register.html">
+
+Create Account
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</section>
+
+<script type="module" src="js/login.js"></script>
+
+</body>
+</html>

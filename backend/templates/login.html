@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BedSafe | Login</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/login.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+        <a href="{{ url_for('home') }}" class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-bed"></i>
+            </div>
+
+            <div>
+                <h2>BedSafe</h2>
+                <p>SMART PRESSURE MONITORING</p>
+            </div>
+
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('home') }}#how">How it Works</a>
+            <a href="{{ url_for('home') }}#features">Features</a>
+            <a href="{{ url_for('home') }}#users">Who It's For</a>
+
+        </div>
+
+        <a href="{{ url_for('register') }}" class="register-btn">
+            Create Account
+        </a>
+
+    </nav>
+
+</header>
+
+<section class="login-section">
+
+    <!-- LEFT SIDE -->
+
+    <div class="left-side">
+
+        <span class="tag">
+            Smart Home Healthcare
+        </span>
+
+        <h1>
+            Secure Access to
+            <span>BedSafe</span>
+        </h1>
+
+        <p>
+            Monitor patients, receive repositioning alerts,
+            and keep every loved one safe with BedSafe's
+            intelligent pressure monitoring system.
+        </p>
+
+        <div class="bed-image">
+
+            <img src="{{ url_for('static', filename='images/login-bed.svg') }}" alt="BedSafe">
+
+        </div>
+
+        <div class="feature-box">
+
+            <div class="feature">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+                <div>
+
+                    <h4>Real-time Monitoring</h4>
+
+                    <p>Continuous pressure monitoring</p>
+
+                </div>
+
+            </div>
+
+            <div class="feature">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <div>
+
+                    <h4>Instant Alerts</h4>
+
+                    <p>Timely caregiver notifications</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="login-card">
+
+        <h2>Welcome Back</h2>
+
+        <p>
+            Sign in to continue monitoring your patients.
+        </p>
+
+        <form action="{{ url_for('login') }}" method="POST">
+
+            <!-- Email -->
+
+            <div class="input-box">
+
+                <label>Email Address</label>
+
+                <div class="input-field">
+
+                    <i class="fa-regular fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+
+                </div>
+
+            </div>
+
+            <!-- Password -->
+
+            <div class="input-box">
+
+                <label>Password</label>
+
+                <div class="input-field">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required>
+
+                    <span id="togglePassword">
+                        <i class="fa-regular fa-eye"></i>
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- Remember -->
+
+            <div class="form-options">
+
+                <label class="remember">
+
+                    <input type="checkbox" name="remember">
+
+                    Remember Me
+
+                </label>
+
+                <a href="#" class="forgot-password">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+            <!-- Button -->
+
+            <button type="submit" class="login-btn">
+                Log In Securely
+            </button>
+
+        </form>
+
+        <div class="register-link">
+
+            <p>
+
+                Don't have an account?
+
+                <a href="{{ url_for('register') }}">
+                    Create Account
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+const togglePassword = document.getElementById("togglePassword");
+const password = document.getElementById("password");
+
+togglePassword.addEventListener("click", function () {
+
+    if (password.type === "password") {
+
+        password.type = "text";
+        this.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+
+    } else {
+
+        password.type = "password";
+        this.innerHTML = '<i class="fa-regular fa-eye"></i>';
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+/* ==========================================
+   BedSafe - Live Monitoring
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"IBM Plex Sans",sans-serif;
+    background:#f5f7fb;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ==========================================
+   Sidebar
+========================================== */
+
+.sidebar{
+    width:260px;
+    background:#0F6B5B;
+    color:white;
+    padding:25px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:40px;
+}
+
+.logo i{
+    font-size:34px;
+}
+
+.logo h2{
+    font-family:"Fraunces",serif;
+}
+
+.logo p{
+    font-size:13px;
+    opacity:.8;
+}
+
+.sidebar nav{
+    display:flex;
+    flex-direction:column;
+}
+
+.sidebar nav a{
+    text-decoration:none;
+    color:white;
+    padding:14px;
+    margin-bottom:10px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav .active{
+    background:rgba(255,255,255,.18);
+}
+
+/* ==========================================
+   Main Content
+========================================== */
+
+.content{
+    flex:1;
+    padding:35px;
+}
+
+.page-header h1{
+    color:#0F6B5B;
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.page-header p{
+    color:#666;
+    font-size:18px;
+}
+
+/* ==========================================
+   Status Cards
+========================================== */
+
+.status-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.status-card{
+    background:white;
+    padding:25px;
+    border-radius:16px;
+    text-align:center;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.status-card:hover{
+    transform:translateY(-5px);
+}
+
+.status-card i{
+    font-size:35px;
+    color:#28C76F;
+    margin-bottom:15px;
+}
+
+.status-card h3{
+    margin-bottom:10px;
+    color:#0F6B5B;
+    font-size:20px;
+}
+
+.status-card p{
+    font-size:22px;
+    font-weight:bold;
+    color:#000;
+}
+
+/* ==========================================
+   Monitoring Panel
+========================================== */
+
+.monitor-panel{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+    margin-top:30px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:16px;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+.card h2{
+    margin-bottom:20px;
+    color:#0F6B5B;
+    font-size:22px;
+}
+
+.card table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.card td{
+    padding:15px 5px;
+    border-bottom:1px solid #eee;
+}
+
+/* ==========================================
+   Safe Status
+========================================== */
+
+.safe{
+    display:inline-block;
+    background:#DFF7E8;
+    color:#198754;
+    padding:6px 14px;
+    border-radius:20px;
+    font-weight:600;
+}
+
+/* ==========================================
+   Pressure Circle
+========================================== */
+
+.progress-circle{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:conic-gradient(#28C76F 65%, #e5e5e5 0);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:25px auto;
+    font-size:32px;
+    font-weight:bold;
+    color:#0F6B5B;
+}
+
+/* ==========================================
+   Recent Position History
+========================================== */
+
+.history-card{
+    background:white;
+    margin-top:30px;
+    padding:25px;
+    border-radius:16px;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+.history-card h2{
+    color:#0F6B5B;
+    margin-bottom:20px;
+}
+
+.history-card table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.history-card th{
+    background:#28C76F;
+    color:white;
+    padding:16px;
+    text-align:center;
+    font-size:18px;
+    font-weight:600;
+}
+
+.history-card td{
+    padding:16px;
+    border-bottom:1px solid #eee;
+    text-align:center;
+}
+
+.history-card tr:hover{
+    background:#F4FFF8;
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media(max-width:900px){
+
+    .monitor-panel{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        width:220px;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+    .page-header h1{
+        font-size:36px;
+    }
+
+}

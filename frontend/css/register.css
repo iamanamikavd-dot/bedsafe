@@ -1,0 +1,832 @@
+/* ==========================================
+   BedSafe Register Page
+   Part 1 - Global Styles
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'IBM Plex Sans',sans-serif;
+
+    background:#F5F6F1;
+
+    color:#163832;
+
+    overflow-x:hidden;
+
+}
+
+/* ==========================
+        HEADER
+========================== */
+
+header{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:80px;
+
+    background:rgba(255,255,255,.95);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 8%;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.06);
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    text-decoration:none;
+
+    color:#163832;
+
+    font-family:'Fraunces',serif;
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+.logo i{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    background:#3E7C6B;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+}
+
+/* ==========================
+      MAIN CONTAINER
+========================== */
+
+.register-container{
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    padding-top:80px;
+
+}
+
+/* ==========================
+      LEFT PANEL
+========================== */
+
+.left-panel{
+
+    background:linear-gradient(135deg,#163832,#3E7C6B);
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:60px;
+
+}
+
+.left-panel img{
+
+    width:100%;
+
+    max-width:420px;
+
+    margin-bottom:40px;
+
+    animation:float 4s ease-in-out infinite;
+
+}
+
+.left-panel h1{
+
+    font-family:'Fraunces',serif;
+
+    font-size:48px;
+
+    margin-bottom:20px;
+
+}
+
+.left-panel p{
+
+    max-width:480px;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+    opacity:.95;
+
+}
+
+/* Floating Animation */
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+      RIGHT PANEL
+========================== */
+
+.right-panel{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:60px;
+
+    background:#F5F6F1;
+
+}
+
+.form-box{
+
+    width:100%;
+
+    max-width:480px;
+
+    background:#ffffff;
+
+    padding:45px;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.form-box h2{
+
+    font-family:'Fraunces',serif;
+
+    color:#163832;
+
+    font-size:40px;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    color:#666;
+
+    margin-bottom:35px;
+
+    font-size:16px;
+
+}
+/* ==========================================
+   INPUT FIELDS
+========================================== */
+
+.input-box{
+
+    margin-bottom:22px;
+
+    position:relative;
+
+}
+
+.input-box label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#163832;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    height:55px;
+
+    padding:0 18px;
+
+    border:1.5px solid #D7DCD2;
+
+    border-radius:12px;
+
+    background:#ffffff;
+
+    font-size:16px;
+
+    color:#163832;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.input-box input::placeholder{
+
+    color:#9AA4A0;
+
+}
+
+.input-box input:focus{
+
+    border-color:#3E7C6B;
+
+    box-shadow:0 0 0 4px rgba(62,124,107,.15);
+
+}
+
+/* ==========================================
+   PASSWORD ICON
+========================================== */
+
+.password-box{
+
+    position:relative;
+
+}
+
+.password-box input{
+
+    padding-right:50px;
+
+}
+
+.toggle-password{
+
+    position:absolute;
+
+    right:18px;
+
+    top:46px;
+
+    color:#777;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.toggle-password:hover{
+
+    color:#163832;
+
+}
+
+/* ==========================================
+   CHECKBOX
+========================================== */
+
+.checkbox{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin:20px 0 30px;
+
+}
+
+.checkbox input{
+
+    margin-top:4px;
+
+    accent-color:#3E7C6B;
+
+    width:18px;
+
+    height:18px;
+
+}
+
+.checkbox label{
+
+    font-size:15px;
+
+    color:#555;
+
+    line-height:1.5;
+
+}
+
+.checkbox a{
+
+    color:#3E7C6B;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.checkbox a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ==========================================
+   REGISTER BUTTON
+========================================== */
+
+.register-btn{
+
+    width:100%;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#163832;
+
+    color:#ffffff;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.register-btn:hover{
+
+    background:#3E7C6B;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(22,56,50,.25);
+
+}
+
+/* ==========================================
+   LOGIN LINK
+========================================== */
+
+.login-link{
+
+    margin-top:28px;
+
+    text-align:center;
+
+    font-size:15px;
+
+    color:#666;
+
+}
+
+.login-link a{
+
+    color:#3E7C6B;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+}
+
+.login-link a:hover{
+
+    text-decoration:underline;
+
+}
+/* ==========================================
+   PART 3 - ANIMATIONS & RESPONSIVE
+========================================== */
+
+/* Form Animation */
+
+.form-box{
+
+    animation:slideInRight .8s ease;
+
+}
+
+.left-panel{
+
+    animation:slideInLeft .8s ease;
+
+}
+
+@keyframes slideInLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes slideInRight{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ==========================================
+   HOVER EFFECTS
+========================================== */
+
+.form-box:hover{
+
+    transform:translateY(-5px);
+
+    transition:.4s;
+
+    box-shadow:0 20px 50px rgba(22,56,50,.15);
+
+}
+
+.left-panel img:hover{
+
+    transform:scale(1.03);
+
+    transition:.4s;
+
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#F5F6F1;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#3E7C6B;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#163832;
+
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media(max-width:992px){
+
+.register-container{
+
+    grid-template-columns:1fr;
+
+}
+
+.left-panel{
+
+    padding:60px 30px;
+
+}
+
+.left-panel img{
+
+    max-width:300px;
+
+}
+
+.left-panel h1{
+
+    font-size:38px;
+
+}
+
+.right-panel{
+
+    padding:40px 20px;
+
+}
+
+.form-box{
+
+    max-width:600px;
+
+}
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+header{
+
+    height:70px;
+
+    padding:0 20px;
+
+}
+
+.logo{
+
+    font-size:24px;
+
+}
+
+.logo i{
+
+    width:42px;
+
+    height:42px;
+
+    font-size:18px;
+
+}
+
+.register-container{
+
+    padding-top:70px;
+
+}
+
+.left-panel{
+
+    padding:40px 20px;
+
+}
+
+.left-panel img{
+
+    max-width:220px;
+
+}
+
+.left-panel h1{
+
+    font-size:30px;
+
+}
+
+.left-panel p{
+
+    font-size:15px;
+
+}
+
+.right-panel{
+
+    padding:25px 15px;
+
+}
+
+.form-box{
+
+    padding:30px 22px;
+
+}
+
+.form-box h2{
+
+    font-size:30px;
+
+}
+
+.subtitle{
+
+    font-size:14px;
+
+}
+
+.input-box input{
+
+    height:50px;
+
+    font-size:15px;
+
+}
+
+.register-btn{
+
+    height:52px;
+
+    font-size:16px;
+
+}
+
+.checkbox{
+
+    align-items:flex-start;
+
+}
+
+.checkbox label{
+
+    font-size:14px;
+
+}
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media(max-width:480px){
+
+.left-panel h1{
+
+    font-size:26px;
+
+}
+
+.form-box{
+
+    padding:25px 18px;
+
+}
+
+.form-box h2{
+
+    font-size:26px;
+
+}
+
+.input-box label{
+
+    font-size:14px;
+
+}
+
+.register-btn{
+
+    font-size:15px;
+
+}
+
+}
+
+/* ==========================================
+   ACTIVE INPUT EFFECT
+========================================== */
+
+.input-box input:valid{
+
+    border-color:#3E7C6B;
+
+}
+
+/* ==========================================
+   BUTTON CLICK EFFECT
+========================================== */
+
+.register-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ==========================================
+   END OF FILE
+========================================== */
+.message{
+    margin:15px 0;
+    padding:12px;
+    border-radius:8px;
+    text-align:center;
+    font-size:15px;
+    display:none;
+}
+
+.message.success{
+    background:#d4edda;
+    color:#155724;
+    border:1px solid #c3e6cb;
+}
+
+.message.error{
+    background:#f8d7da;
+    color:#721c24;
+    border:1px solid #f5c6cb;
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BedSafe | Live Monitoring</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/monitoring.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-bed"></i>
+
+            <div>
+
+                <h2>BedSafe</h2>
+
+                <p>Pressure Ulcer Prevention</p>
+
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+
+            <a href="patients.html">
+                <i class="fa-solid fa-user-plus"></i>
+                Add Patient
+            </a>
+
+            <a href="view-patients.html">
+                <i class="fa-solid fa-user-group"></i>
+                View Patients
+            </a>
+
+            <a href="monitoring.html" class="active">
+                <i class="fa-solid fa-heart-pulse"></i>
+                Live Monitoring
+            </a>
+
+            <a href="alerts.html">
+                <i class="fa-solid fa-bell"></i>
+                Alert History
+            </a>
+
+            <a href="settings.html">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="content">
+
+        <header class="page-header">
+
+            <h1>Live Patient Monitoring</h1>
+
+            <p>Monitor the patient's pressure status in real time.</p>
+
+        </header>
+
+        <!-- Status Cards -->
+
+        <section class="status-grid">
+
+            <div class="status-card">
+                <i class="fa-solid fa-user"></i>
+                <h3>Patient</h3>
+                <p id="patientName">Loading...</p>
+            </div>
+
+            <div class="status-card">
+                <i class="fa-solid fa-bed"></i>
+                <h3>Position</h3>
+                <p id="position">Left Side</p>
+            </div>
+
+            <div class="status-card">
+                <i class="fa-solid fa-chart-column"></i>
+                <h3>Pressure</h3>
+                <p id="pressure">65%</p>
+            </div>
+
+            <div class="status-card">
+                <i class="fa-solid fa-clock"></i>
+                <h3>Duration</h3>
+                <p id="duration">00:00:00</p>
+            </div>
+
+        </section>
+
+        <!-- Monitoring Panel -->
+
+        <section class="monitor-panel">
+
+            <div class="card">
+
+                <h2>Current Status</h2>
+
+                <table>
+
+                    <tr>
+                        <td>Risk Level</td>
+                        <td id="riskLevel">
+                            <span class="safe">LOW</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>ESP32 Status</td>
+                        <td id="espStatus">
+                            Connected
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Firebase</td>
+                        <td>
+                            Connected
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Pressure Indicator</h2>
+
+                <div class="progress-circle">
+
+                    <span id="pressureValue">
+                        65%
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Position History -->
+
+        <section class="history-card">
+
+            <h2>Recent Position History</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Time</th>
+
+                        <th>Position</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="historyTable">
+
+                    <tr>
+
+                        <td>09:00 AM</td>
+
+                        <td>Left Side</td>
+
+                        <td>Safe</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script type="module" src="js/monitoring.js"></script>
+
+</body>
+</html>

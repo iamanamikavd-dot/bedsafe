@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BedSafe | Patient Details</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/view-patient.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-bed"></i>
+
+            <div>
+
+                <h2>BedSafe</h2>
+
+                <p>Pressure Ulcer Prevention</p>
+
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+
+            <a href="patients.html">
+                <i class="fa-solid fa-user-plus"></i>
+                Add Patient
+            </a>
+
+            <a href="view-patients.html" class="active">
+                <i class="fa-solid fa-user-group"></i>
+                View Patients
+            </a>
+
+            <a href="monitoring.html">
+                <i class="fa-solid fa-heart-pulse"></i>
+                Live Monitoring
+            </a>
+
+            <a href="alerts.html">
+                <i class="fa-solid fa-bell"></i>
+                Alert History
+            </a>
+
+            <a href="settings.html">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="content">
+
+        <header class="page-header">
+
+            <h1>
+                <i class="fa-solid fa-user"></i>
+                Patient Details
+            </h1>
+
+            <p>Complete information about the selected patient.</p>
+
+        </header>
+
+        <section class="details-card">
+
+            <div class="profile-icon">
+
+                <i class="fa-solid fa-user-circle"></i>
+
+            </div>
+
+            <div class="details-grid">
+
+                <div class="detail-box">
+                    <h4>Patient Name</h4>
+                    <p id="patientName">Loading...</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Age</h4>
+                    <p id="patientAge">Loading...</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Gender</h4>
+                    <p id="patientGender">Loading...</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Weight</h4>
+                    <p id="patientWeight">Loading...</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Caregiver</h4>
+                    <p id="patientCaregiver">Loading...</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Phone Number</h4>
+                    <p id="patientPhone">Loading...</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Address</h4>
+                    <p id="patientAddress">Loading...</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Emergency Contact</h4>
+                    <p id="patientEmergency">Loading...</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Status</h4>
+                    <p id="patientStatus">Loading...</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Registered On</h4>
+                    <p id="patientCreated">Loading...</p>
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button onclick="history.back()" class="back-btn">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back
+
+                </button>
+
+                <button id="editBtn" class="edit-btn">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                    Edit Patient
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script type="module" src="js/view-patient.js"></script>
+
+</body>
+</html>

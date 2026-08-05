@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BedSafe | Create Account</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/register.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <a href="home.html" class="logo">
+
+        <i class="fa-solid fa-bed"></i>
+
+        <span>BedSafe</span>
+
+    </a>
+
+</header>
+
+<section class="register-container">
+
+    <!-- LEFT SIDE -->
+
+    <div class="left-panel">
+
+        <img src="images/login-bed.svg" alt="BedSafe">
+
+        <h1>Create Your BedSafe Account</h1>
+
+        <p>
+            Join BedSafe and monitor bedridden patients safely from anywhere.
+            Create your account to start preventing pressure ulcers through
+            intelligent monitoring and timely caregiver alerts.
+        </p>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="right-panel">
+
+        <div class="form-box">
+
+            <h2>Create Account</h2>
+
+            <p class="subtitle">
+                Fill in your information to get started.
+            </p>
+
+            <form id="registerForm">
+
+                <!-- Full Name -->
+
+                <div class="input-box">
+
+                    <label>Full Name</label>
+
+                    <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter your full name"
+                    required>
+
+                </div>
+
+                <!-- Email -->
+
+                <div class="input-box">
+
+                    <label>Email Address</label>
+
+                    <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
+
+                </div>
+
+                <!-- Phone -->
+
+                <div class="input-box">
+
+                    <label>Phone Number</label>
+
+                    <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter phone number"
+                    required>
+
+                </div>
+
+                <!-- Password -->
+
+                <div class="input-box password-box">
+
+                    <label>Password</label>
+
+                    <input
+                    type="password"
+                    id="password"
+                    placeholder="Create password"
+                    required>
+
+                    <i class="fa-solid fa-eye toggle-password"></i>
+
+                </div>
+
+                <!-- Confirm Password -->
+
+                <div class="input-box password-box">
+
+                    <label>Confirm Password</label>
+
+                    <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm password"
+                    required>
+
+                    <i class="fa-solid fa-eye toggle-password"></i>
+
+                </div>
+
+                <!-- Terms -->
+
+                <div class="checkbox">
+
+                    <input
+                    type="checkbox"
+                    id="agree"
+                    required>
+
+                    <label for="agree">
+
+                        I agree to the
+                        <a href="#">Terms & Conditions</a>
+
+                    </label>
+
+                </div>
+
+                <!-- Success / Error Message -->
+
+                <div id="message" class="message"></div>
+
+                <!-- Register Button -->
+
+                <button
+                type="submit"
+                class="register-btn">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+            <!-- Login Link -->
+
+            <div class="login-link">
+
+                <p>
+
+                    Already have an account?
+
+                    <a href="login.html">
+
+                        Log In
+
+                    </a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script type="module" src="js/register.js"></script>
+
+</body>
+
+</html>

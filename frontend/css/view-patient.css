@@ -1,0 +1,161 @@
+/* ==========================================
+   BedSafe - View Patient
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "IBM Plex Sans", sans-serif;
+    background: #f4f7fb;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 260px;
+    background: #12355b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.logo i {
+    font-size: 32px;
+}
+
+.logo h2 {
+    font-family: "Fraunces", serif;
+}
+
+.logo p {
+    font-size: 13px;
+    opacity: .8;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar nav a {
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: .3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav .active {
+    background: rgba(255,255,255,.15);
+}
+
+/* Main */
+
+.content {
+    flex: 1;
+    padding: 35px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    color: #12355b;
+}
+
+.page-header p {
+    color: #666;
+    margin-top: 8px;
+}
+
+.details-card {
+    background: white;
+    margin-top: 30px;
+    border-radius: 18px;
+    padding: 35px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.profile-icon {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-icon i {
+    font-size: 90px;
+    color: #1abc9c;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.detail-box {
+    background: #f7f9fc;
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.detail-box h4 {
+    color: #12355b;
+    margin-bottom: 8px;
+}
+
+.detail-box p {
+    color: #555;
+    font-size: 17px;
+}
+
+.buttons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.buttons button {
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.back-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.edit-btn {
+    background: #1abc9c;
+    color: white;
+}
+
+.back-btn:hover {
+    background: #555;
+}
+
+.edit-btn:hover {
+    background: #16a085;
+}

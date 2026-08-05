@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BedSafe | View Patients</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/view-patients.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-bed"></i>
+
+            <div>
+
+                <h2>BedSafe</h2>
+
+                <p>Pressure Ulcer Prevention</p>
+
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+
+            <a href="patients.html">
+                <i class="fa-solid fa-user-plus"></i>
+                Add Patient
+            </a>
+
+            <a href="view-patients.html" class="active">
+                <i class="fa-solid fa-user-group"></i>
+                View Patients
+            </a>
+
+            <a href="monitoring.html">
+                <i class="fa-solid fa-heart-pulse"></i>
+                Live Monitoring
+            </a>
+
+            <a href="alerts.html">
+                <i class="fa-solid fa-bell"></i>
+                Alert History
+            </a>
+
+            <a href="settings.html">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="content">
+
+        <header class="page-header">
+
+            <div>
+
+                <h1>Patient List</h1>
+
+                <p>View and manage registered patients.</p>
+
+            </div>
+
+            <input
+                type="text"
+                id="searchPatient"
+                placeholder="Search patient...">
+
+        </header>
+
+        <section class="table-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Patient Name</th>
+
+                        <th>Age</th>
+
+                        <th>Gender</th>
+
+                        <th>Caregiver</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="patientTable">
+
+                </tbody>
+
+                    
+
+                        
+
+                            <span class="status active">
+
+                                Monitoring
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="view">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                            <button class="edit">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </button>
+
+                            <button class="delete">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script type="module" src="js/view-patients.js"></script>
+
+</body>
+
+</html>
