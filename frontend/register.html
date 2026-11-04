@@ -12,8 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Font Awesome -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+/>
 
 <!-- CSS -->
 <link rel="stylesheet" href="css/register.css">
@@ -24,7 +26,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <header>
 
-    <a href="home.html" class="logo">
+    <a href="index.html" class="logo">
 
         <i class="fa-solid fa-bed"></i>
 
@@ -34,9 +36,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 </header>
 
+
 <section class="register-container">
 
-    <!-- LEFT SIDE -->
+
+    <!-- ==========================================
+         LEFT SIDE
+    =========================================== -->
 
     <div class="left-panel">
 
@@ -52,7 +58,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
     </div>
 
-    <!-- RIGHT SIDE -->
+
+    <!-- ==========================================
+         RIGHT SIDE
+    =========================================== -->
 
     <div class="right-panel">
 
@@ -64,109 +73,194 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
                 Fill in your information to get started.
             </p>
 
-            <form id="registerForm">
 
-                <!-- Full Name -->
+            <!-- ==========================================
+                 REGISTRATION FORM
+            =========================================== -->
 
-                <div class="input-box">
+            <form id="registerForm" novalidate>
 
-                    <label>Full Name</label>
 
-                    <input
-                    type="text"
-                    id="fullName"
-                    placeholder="Enter your full name"
-                    required>
-
-                </div>
-
-                <!-- Email -->
+                <!-- ======================================
+                     FULL NAME
+                ======================================= -->
 
                 <div class="input-box">
 
-                    <label>Email Address</label>
+                    <label for="fullName">
+                        Full Name
+                    </label>
 
                     <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    required>
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                    <small
+                        id="fullNameError"
+                        class="field-error">
+                    </small>
 
                 </div>
 
-                <!-- Phone -->
+
+                <!-- ======================================
+                     EMAIL
+                ======================================= -->
 
                 <div class="input-box">
 
-                    <label>Phone Number</label>
+                    <label for="email">
+                        Email Address
+                    </label>
 
                     <input
-                    type="tel"
-                    id="phone"
-                    placeholder="Enter phone number"
-                    required>
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                    <small
+                        id="emailError"
+                        class="field-error">
+                    </small>
 
                 </div>
 
-                <!-- Password -->
+
+                <!-- ======================================
+                     PHONE
+                ======================================= -->
+
+                <div class="input-box">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter phone number"
+                        maxlength="10"
+                        required
+                    >
+
+                    <small
+                        id="phoneError"
+                        class="field-error">
+                    </small>
+
+                </div>
+
+
+                <!-- ======================================
+                     PASSWORD
+                ======================================= -->
 
                 <div class="input-box password-box">
 
-                    <label>Password</label>
+                    <label for="password">
+                        Password
+                    </label>
 
                     <input
-                    type="password"
-                    id="password"
-                    placeholder="Create password"
-                    required>
+                        type="password"
+                        id="password"
+                        placeholder="Create password"
+                        required
+                    >
 
-                    <i class="fa-solid fa-eye toggle-password"></i>
+                    <i
+                        class="fa-solid fa-eye toggle-password">
+                    </i>
+
+                    <small
+                        id="passwordError"
+                        class="field-error">
+                    </small>
 
                 </div>
 
-                <!-- Confirm Password -->
+
+                <!-- ======================================
+                     CONFIRM PASSWORD
+                ======================================= -->
 
                 <div class="input-box password-box">
 
-                    <label>Confirm Password</label>
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
 
                     <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="Confirm password"
-                    required>
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm password"
+                        required
+                    >
 
-                    <i class="fa-solid fa-eye toggle-password"></i>
+                    <i
+                        class="fa-solid fa-eye toggle-password">
+                    </i>
+
+                    <small
+                        id="confirmPasswordError"
+                        class="field-error">
+                    </small>
 
                 </div>
 
-                <!-- Terms -->
+
+                <!-- ======================================
+                     TERMS & CONDITIONS
+                ======================================= -->
 
                 <div class="checkbox">
 
                     <input
-                    type="checkbox"
-                    id="agree"
-                    required>
+                        type="checkbox"
+                        id="agree"
+                        required
+                    >
 
                     <label for="agree">
 
                         I agree to the
-                        <a href="#">Terms & Conditions</a>
+                        <a href="#">
+                            Terms & Conditions
+                        </a>
 
                     </label>
 
                 </div>
 
-                <!-- Success / Error Message -->
+                <small
+                    id="agreeError"
+                    class="field-error terms-error">
+                </small>
 
-                <div id="message" class="message"></div>
 
-                <!-- Register Button -->
+                <!-- ======================================
+                     SUCCESS / ERROR MESSAGE
+                ======================================= -->
+
+                <div
+                    id="message"
+                    class="message">
+                </div>
+
+
+                <!-- ======================================
+                     REGISTER BUTTON
+                ======================================= -->
 
                 <button
-                type="submit"
-                class="register-btn">
+                    type="submit"
+                    class="register-btn">
 
                     Create Account
 
@@ -174,7 +268,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
             </form>
 
-            <!-- Login Link -->
+
+            <!-- ==========================================
+                 LOGIN LINK
+            =========================================== -->
 
             <div class="login-link">
 
@@ -183,9 +280,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
                     Already have an account?
 
                     <a href="login.html">
-
                         Log In
-
                     </a>
 
                 </p>
@@ -197,6 +292,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     </div>
 
 </section>
+
+
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
 
 <script type="module" src="js/register.js"></script>
 

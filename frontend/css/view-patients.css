@@ -1,242 +1,491 @@
 /* ==========================================
-        BedSafe - View Patients
+   BEDSAFE - VIEW PATIENTS
 ========================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+/* Google Fonts are already imported in HTML */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:'IBM Plex Sans',sans-serif;
-    background:#f4f7f6;
-    color:#222;
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
-.container{
-    display:flex;
-    min-height:100vh;
+body {
+    font-family: "IBM Plex Sans", sans-serif;
+    background: #f5f6f1;
+    color: #163832;
 }
 
-/* ===========================
-        Sidebar
-=========================== */
 
-.sidebar{
-    width:260px;
-    background:#0d5b4f;
-    color:white;
-    padding:30px 20px;
+/* ==========================================
+   SIDEBAR
+========================================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 318px;
+    height: 100vh;
+
+    background: #0f6257;
+    color: white;
+
+    padding: 38px 20px;
+
+    z-index: 1000;
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:40px;
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 58px;
+    padding-left: 0;
 }
 
-.logo i{
-    font-size:34px;
+.logo > i {
+    font-size: 42px;
+    color: white;
 }
 
-.logo h2{
-    font-family:'Fraunces',serif;
-    font-size:32px;
+.logo h2 {
+    font-family: "Fraunces", serif;
+
+    font-size: 40px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    color: white;
 }
 
-.logo p{
-    font-size:12px;
-    opacity:.8;
+.logo p {
+    margin-top: 6px;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    color: white;
 }
 
-.sidebar nav{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+
+/* ==========================================
+   SIDEBAR NAVIGATION
+========================================== */
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
 }
 
-.sidebar nav a{
-    text-decoration:none;
-    color:white;
-    padding:14px 18px;
-    border-radius:12px;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    transition:.3s;
+.sidebar nav a {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 62px;
+
+    padding: 0 22px;
+
+    gap: 18px;
+
+    border-radius: 15px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    transition: all 0.2s ease;
 }
 
-.sidebar nav a:hover{
-    background:rgba(255,255,255,.15);
+.sidebar nav a i {
+    width: 22px;
+
+    font-size: 20px;
+
+    text-align: center;
 }
 
-.sidebar nav a.active{
-    background:white;
-    color:#0d5b4f;
+
+/* Hover */
+
+.sidebar nav a:hover {
+    background: rgba(255, 255, 255, 0.12);
 }
 
-/* ===========================
-        Main Content
-=========================== */
 
-.content{
-    flex:1;
-    padding:35px;
+/* Active */
+
+.sidebar nav a.active {
+    background: white;
+
+    color: #0f6257;
 }
 
-.page-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:30px;
+
+/* ==========================================
+   MAIN CONTENT
+========================================== */
+
+.content {
+    margin-left: 318px;
+
+    min-height: 100vh;
+
+    padding: 45px 42px 60px;
 }
 
-.page-header h1{
-    font-family:'Fraunces',serif;
-    font-size:40px;
-    color:#0d5b4f;
+
+/* ==========================================
+   PAGE HEADER
+========================================== */
+
+.page-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 30px;
+
+    margin-bottom: 36px;
 }
 
-.page-header p{
-    color:#666;
-    margin-top:5px;
+.page-header h1 {
+    font-family: "Fraunces", serif;
+
+    font-size: 48px;
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    color: #0f6257;
 }
 
-#searchPatient{
-    width:280px;
-    padding:13px 18px;
-    border:1px solid #ddd;
-    border-radius:10px;
-    outline:none;
+.page-header p {
+    margin-top: 12px;
+
+    font-size: 19px;
+
+    color: #536b69;
 }
 
-#searchPatient:focus{
-    border-color:#0d5b4f;
+
+/* ==========================================
+   SEARCH BOX
+========================================== */
+
+#searchPatient {
+    width: 300px;
+    height: 56px;
+
+    padding: 0 24px;
+
+    border: 1px solid #d8dedb;
+
+    border-radius: 14px;
+
+    background: white;
+
+    font-family: "IBM Plex Sans", sans-serif;
+
+    font-size: 16px;
+
+    outline: none;
 }
 
-/* ===========================
-        Table
-=========================== */
+#searchPatient:focus {
+    border-color: #0f6257;
 
-.table-card{
-    background:white;
-    border-radius:20px;
-    padding:25px;
-    box-shadow:0 8px 25px rgba(0,0,0,.05);
+    box-shadow: 0 0 0 3px rgba(15, 98, 87, 0.08);
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
+#searchPatient::placeholder {
+    color: #687b79;
 }
 
-thead{
-    background:#0d5b4f;
-    color:white;
+
+/* ==========================================
+   TABLE CARD
+========================================== */
+
+.table-card {
+    width: 100%;
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 28px 30px 30px;
+
+    box-shadow: 0 8px 30px rgba(22, 56, 50, 0.08);
+
+    overflow-x: auto;
 }
 
-th{
-    padding:16px;
-    text-align:left;
+
+/* ==========================================
+   TABLE
+========================================== */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 850px;
 }
 
-td{
-    padding:18px 16px;
-    border-bottom:1px solid #eee;
+
+/* ==========================================
+   TABLE HEADER
+========================================== */
+
+thead {
+    background: #0f6257;
 }
 
-tbody tr:hover{
-    background:#f7fbfa;
+thead tr {
+    height: 66px;
 }
 
-/* ===========================
-        Status Badge
-=========================== */
+thead th {
+    padding: 0 20px;
 
-.status{
-    padding:6px 14px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:600;
+    text-align: left;
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: 600;
 }
 
-.status.active{
-    background:#dff6e5;
-    color:#2e7d32;
+
+/* Rounded top corners */
+
+thead th:first-child {
+    border-radius: 4px 0 0 4px;
 }
 
-/* ===========================
-        Action Buttons
-=========================== */
-
-button{
-    border:none;
-    cursor:pointer;
-    border-radius:8px;
-    padding:8px 12px;
-    color:white;
-    margin-right:6px;
-    transition:.3s;
+thead th:last-child {
+    border-radius: 0 4px 4px 0;
 }
 
-.view{
-    background:#1976d2;
+
+/* ==========================================
+   TABLE BODY
+========================================== */
+
+tbody tr {
+    border-bottom: 1px solid #e5e9e7;
+
+    transition: background 0.2s ease;
 }
 
-.edit{
-    background:#fb8c00;
+tbody tr:hover {
+    background: #f8faf8;
 }
 
-.delete{
-    background:#d32f2f;
+tbody td {
+    padding: 20px;
+
+    font-size: 16px;
+
+    color: #263f3b;
+
+    vertical-align: middle;
 }
 
-.view:hover{
-    background:#1565c0;
+
+/* ==========================================
+   NO PATIENTS MESSAGE
+========================================== */
+
+.no-patients {
+    text-align: center;
+
+    padding: 35px 20px !important;
+
+    font-size: 17px;
+
+    color: #536b69;
 }
 
-.edit:hover{
-    background:#ef6c00;
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 7px 16px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.delete:hover{
-    background:#b71c1c;
+.status.active {
+    background: #dff5e8;
+
+    color: #16834e;
 }
 
-/* ===========================
-        Responsive
-=========================== */
 
-@media(max-width:900px){
+/* ==========================================
+   ACTION BUTTONS
+========================================== */
 
-.container{
-    flex-direction:column;
+.view,
+.edit,
+.delete {
+    width: 46px;
+    height: 42px;
+
+    margin-right: 7px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: transform 0.15s ease,
+                opacity 0.15s ease;
 }
 
-.sidebar{
-    width:100%;
+.view:hover,
+.edit:hover,
+.delete:hover {
+    transform: translateY(-2px);
+
+    opacity: 0.9;
 }
 
-.page-header{
-    flex-direction:column;
-    gap:20px;
-    align-items:flex-start;
+
+/* View */
+
+.view {
+    background: #2581d9;
 }
 
-#searchPatient{
-    width:100%;
+
+/* Edit */
+
+.edit {
+    background: #ff9418;
 }
 
-.table-card{
-    overflow-x:auto;
+
+/* Delete */
+
+.delete {
+    background: #df3030;
 }
 
-table{
-    min-width:700px;
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 250px;
+    }
+
+    .content {
+        margin-left: 250px;
+
+        padding: 35px 25px;
+    }
+
+    .logo h2 {
+        font-size: 32px;
+    }
+
+    .sidebar nav a {
+        font-size: 17px;
+    }
+
+    .page-header h1 {
+        font-size: 40px;
+    }
+
+    #searchPatient {
+        width: 240px;
+    }
 }
 
+
+@media (max-width: 750px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+
+        padding: 25px 20px;
+    }
+
+    .logo {
+        margin-bottom: 25px;
+    }
+
+    .sidebar nav {
+        gap: 5px;
+    }
+
+    .sidebar nav a {
+        height: 50px;
+    }
+
+    .content {
+        margin-left: 0;
+
+        padding: 30px 20px;
+    }
+
+    .page-header {
+        flex-direction: column;
+    }
+
+    #searchPatient {
+        width: 100%;
+    }
 }

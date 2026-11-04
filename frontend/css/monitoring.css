@@ -1,3 +1,4 @@
+```css
 /* ==========================================
    BedSafe - Live Monitoring
 ========================================== */
@@ -88,6 +89,119 @@ body{
     font-size:18px;
 }
 
+
+/* ==========================================
+   🚨 REPOSITION ALERT BANNER
+========================================== */
+
+.alert-banner{
+    display:none;
+
+    width:100%;
+
+    margin-top:25px;
+    margin-bottom:10px;
+
+    padding:25px 30px;
+
+    background:#fff0f0;
+
+    border:3px solid #d9534f;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 8px 25px rgba(217,83,79,.25);
+
+    align-items:center;
+
+    gap:22px;
+
+    animation:alertPulse 1.2s infinite;
+}
+
+
+/* Alert Icon */
+
+.alert-icon{
+    width:65px;
+    height:65px;
+
+    min-width:65px;
+
+    border-radius:50%;
+
+    background:#d9534f;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    box-shadow:
+        0 0 0 6px rgba(217,83,79,.12);
+}
+
+
+/* Alert Text */
+
+.alert-content{
+    flex:1;
+}
+
+.alert-content h2{
+    margin:0 0 8px 0;
+
+    color:#b42318;
+
+    font-size:27px;
+
+    font-weight:700;
+}
+
+.alert-content p{
+    margin:0;
+
+    color:#7a271a;
+
+    font-size:17px;
+
+    font-weight:500;
+
+    line-height:1.5;
+}
+
+
+/* Alert Animation */
+
+@keyframes alertPulse{
+
+    0%{
+        transform:scale(1);
+        box-shadow:
+            0 8px 25px rgba(217,83,79,.25);
+    }
+
+    50%{
+        transform:scale(1.01);
+        box-shadow:
+            0 8px 35px rgba(217,83,79,.45);
+    }
+
+    100%{
+        transform:scale(1);
+        box-shadow:
+            0 8px 25px rgba(217,83,79,.25);
+    }
+
+}
+
+
 /* ==========================================
    Status Cards
 ========================================== */
@@ -130,6 +244,7 @@ body{
     color:#000;
 }
 
+
 /* ==========================================
    Monitoring Panel
 ========================================== */
@@ -164,6 +279,7 @@ body{
     border-bottom:1px solid #eee;
 }
 
+
 /* ==========================================
    Safe Status
 ========================================== */
@@ -177,6 +293,45 @@ body{
     font-weight:600;
 }
 
+
+/* ==========================================
+   Warning Status
+========================================== */
+
+.warning{
+    display:inline-block;
+
+    background:#FFF3CD;
+
+    color:#856404;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-weight:600;
+}
+
+
+/* ==========================================
+   Danger Status
+========================================== */
+
+.danger{
+    display:inline-block;
+
+    background:#F8D7DA;
+
+    color:#B42318;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-weight:700;
+}
+
+
 /* ==========================================
    Pressure Circle
 ========================================== */
@@ -184,16 +339,29 @@ body{
 .progress-circle{
     width:180px;
     height:180px;
+
     border-radius:50%;
-    background:conic-gradient(#28C76F 65%, #e5e5e5 0);
+
+    background:
+        conic-gradient(
+            #28C76F 65%,
+            #e5e5e5 0
+        );
+
     display:flex;
+
     justify-content:center;
     align-items:center;
+
     margin:25px auto;
+
     font-size:32px;
+
     font-weight:bold;
+
     color:#0F6B5B;
 }
+
 
 /* ==========================================
    Recent Position History
@@ -201,40 +369,95 @@ body{
 
 .history-card{
     background:white;
+
     margin-top:30px;
+
     padding:25px;
+
     border-radius:16px;
+
     box-shadow:0 8px 18px rgba(0,0,0,.08);
 }
 
 .history-card h2{
     color:#0F6B5B;
+
     margin-bottom:20px;
 }
 
 .history-card table{
     width:100%;
+
     border-collapse:collapse;
 }
 
 .history-card th{
     background:#28C76F;
+
     color:white;
+
     padding:16px;
+
     text-align:center;
+
     font-size:18px;
+
     font-weight:600;
 }
 
 .history-card td{
     padding:16px;
+
     border-bottom:1px solid #eee;
+
     text-align:center;
 }
 
 .history-card tr:hover{
     background:#F4FFF8;
 }
+
+
+/* ==========================================
+   🚨 Alert Banner Mobile
+========================================== */
+
+@media(max-width:600px){
+
+    .alert-banner{
+
+        padding:20px;
+
+        gap:15px;
+
+        align-items:flex-start;
+    }
+
+    .alert-icon{
+
+        width:50px;
+
+        height:50px;
+
+        min-width:50px;
+
+        font-size:23px;
+    }
+
+    .alert-content h2{
+
+        font-size:20px;
+
+        margin-bottom:6px;
+    }
+
+    .alert-content p{
+
+        font-size:14px;
+    }
+
+}
+
 
 /* ==========================================
    Responsive
@@ -259,3 +482,57 @@ body{
     }
 
 }
+
+
+/* ==========================================
+   Small Screen Sidebar
+========================================== */
+
+@media(max-width:650px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        padding:15px;
+    }
+
+    .logo{
+
+        margin-bottom:20px;
+    }
+
+    .sidebar nav{
+
+        flex-direction:row;
+
+        flex-wrap:wrap;
+
+        gap:5px;
+    }
+
+    .sidebar nav a{
+
+        margin-bottom:0;
+
+        padding:10px;
+
+        font-size:13px;
+    }
+
+    .content{
+
+        padding:15px;
+    }
+
+    .page-header h1{
+
+        font-size:30px;
+    }
+
+}
+

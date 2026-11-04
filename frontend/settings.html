@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BedSafe - Settings</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+
+    <!-- Settings CSS -->
+    <link rel="stylesheet" href="css/settings.css">
+
+</head>
+
+
+<body>
+
+    <!-- ==========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+
+        <div class="logo-section">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-bed"></i>
+            </div>
+
+            <div class="logo-text">
+                <h1>BedSafe</h1>
+                <p>Pressure Ulcer Prevention</p>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a href="patients.html">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Add Patient</span>
+            </a>
+
+
+            <a href="view-patients.html">
+                <i class="fa-solid fa-users"></i>
+                <span>View Patients</span>
+            </a>
+
+
+            <a href="monitoring.html">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <span>Live Monitoring</span>
+            </a>
+
+
+            <a href="alerts.html">
+                <i class="fa-solid fa-bell"></i>
+                <span>Alert History</span>
+            </a>
+
+
+            <a href="settings.html" class="active">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h2>Settings</h2>
+
+                <p>
+                    Manage your BedSafe account and monitoring preferences.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             PROFILE SETTINGS
+        ========================================== -->
+
+        <section class="settings-card">
+
+            <div class="card-header">
+
+                <div class="header-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div>
+                    <h3>Profile Settings</h3>
+
+                    <p>
+                        Update your personal information.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form id="profileForm">
+
+                <div class="form-grid">
+
+                    <!-- FULL NAME -->
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            placeholder="Enter your full name"
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            readonly
+                        >
+
+                        <small>
+                            Email is managed through Firebase Authentication.
+                        </small>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter your phone number"
+                            maxlength="10"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Profile
+
+                </button>
+
+            </form>
+
+
+            <div
+                id="profileMessage"
+                class="message"
+            ></div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             NOTIFICATION SETTINGS
+        ========================================== -->
+
+        <section class="settings-card">
+
+            <div class="card-header">
+
+                <div class="header-icon">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+
+                <div>
+
+                    <h3>Notification Settings</h3>
+
+                    <p>
+                        Control the alerts you receive from BedSafe.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- REPOSITIONING ALERT -->
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <div class="setting-icon">
+                        <i class="fa-solid fa-bed"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>Repositioning Alerts</h4>
+
+                        <p>
+                            Receive alerts when the patient needs to be repositioned.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="repositioningAlert"
+                        checked
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+
+            <!-- GENERAL ALERT -->
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <div class="setting-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>General Alerts</h4>
+
+                        <p>
+                            Receive important BedSafe system notifications.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="generalAlert"
+                        checked
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             MONITORING SETTINGS
+        ========================================== -->
+
+        <section class="settings-card">
+
+            <div class="card-header">
+
+                <div class="header-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <div>
+
+                    <h3>Monitoring Settings</h3>
+
+                    <p>
+                        Configure patient monitoring preferences.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="monitoringInterval">
+                        Repositioning Interval
+                    </label>
+
+
+                    <select id="monitoringInterval">
+
+                        <option value="30">
+                            30 minutes
+                        </option>
+
+                        <option value="60" selected>
+                            1 hour
+                        </option>
+
+                        <option value="90">
+                            1.5 hours
+                        </option>
+
+                        <option value="120">
+                            2 hours
+                        </option>
+
+                        <option value="180">
+                            3 hours
+                        </option>
+
+                    </select>
+
+
+                    <small>
+                        Set the preferred time interval for repositioning alerts.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="save-btn"
+                id="saveMonitoring"
+            >
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Save Monitoring Settings
+
+            </button>
+
+
+            <div
+                id="monitoringMessage"
+                class="message"
+            ></div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             ACCOUNT SETTINGS
+        ========================================== -->
+
+        <section class="settings-card">
+
+            <div class="card-header">
+
+                <div class="header-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+
+                    <h3>Account</h3>
+
+                    <p>
+                        Manage your account security.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHANGE PASSWORD -->
+
+            <div class="account-row">
+
+                <div>
+
+                    <h4>
+                        Change Password
+                    </h4>
+
+                    <p>
+                        Update your Firebase account password.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="changePasswordBtn"
+                >
+
+                    <i class="fa-solid fa-key"></i>
+
+                    Change Password
+
+                </button>
+
+            </div>
+
+
+
+            <!-- LOGOUT -->
+
+            <div class="account-row logout-row">
+
+                <div>
+
+                    <h4>
+                        Logout
+                    </h4>
+
+                    <p>
+                        Sign out of your BedSafe account.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutBtn"
+                >
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script
+        type="module"
+        src="js/settings.js"
+    ></script>
+
+</body>
+
+</html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +14,9 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <!-- Monitoring CSS -->
     <link rel="stylesheet" href="css/monitoring.css">
 
 </head>
@@ -23,7 +25,7 @@
 
 <div class="container">
 
-    <!-- Sidebar -->
+    <!-- ================= SIDEBAR ================= -->
 
     <aside class="sidebar">
 
@@ -32,11 +34,8 @@
             <i class="fa-solid fa-bed"></i>
 
             <div>
-
                 <h2>BedSafe</h2>
-
                 <p>Pressure Ulcer Prevention</p>
-
             </div>
 
         </div>
@@ -77,51 +76,119 @@
 
     </aside>
 
-    <!-- Main -->
+
+    <!-- ================= MAIN CONTENT ================= -->
 
     <main class="content">
+
+        <!-- PAGE HEADER -->
 
         <header class="page-header">
 
             <h1>Live Patient Monitoring</h1>
 
-            <p>Monitor the patient's pressure status in real time.</p>
+            <p>
+                Monitor the patient's pressure status in real time.
+            </p>
 
         </header>
 
-        <!-- Status Cards -->
+
+        <!-- ================= LARGE ALERT BANNER ================= -->
+
+        <div id="alertBanner" class="alert-banner">
+
+            <div class="alert-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <div class="alert-content">
+
+                <h2 id="alertBannerTitle">
+                    🚨 REPOSITION REQUIRED
+                </h2>
+
+                <p id="alertBannerMessage">
+                    High pressure detected. Please reposition the patient.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= STATUS CARDS ================= -->
 
         <section class="status-grid">
 
+            <!-- Patient -->
+
             <div class="status-card">
+
                 <i class="fa-solid fa-user"></i>
+
                 <h3>Patient</h3>
-                <p id="patientName">Loading...</p>
+
+                <p id="patientName">
+                    Loading...
+                </p>
+
             </div>
 
+
+            <!-- Position -->
+
             <div class="status-card">
+
                 <i class="fa-solid fa-bed"></i>
+
                 <h3>Position</h3>
-                <p id="position">Left Side</p>
+
+                <p id="position">
+                    Sensor Testing
+                </p>
+
             </div>
 
+
+            <!-- Pressure -->
+
             <div class="status-card">
+
                 <i class="fa-solid fa-chart-column"></i>
+
                 <h3>Pressure</h3>
-                <p id="pressure">65%</p>
+
+                <p id="pressure">
+                    0
+                </p>
+
             </div>
 
+
+            <!-- Duration -->
+
             <div class="status-card">
+
                 <i class="fa-solid fa-clock"></i>
+
                 <h3>Duration</h3>
-                <p id="duration">00:00:00</p>
+
+                <p id="duration">
+                    00:00:00
+                </p>
+
             </div>
 
         </section>
 
-        <!-- Monitoring Panel -->
+
+        <!-- ================= MONITORING PANEL ================= -->
 
         <section class="monitor-panel">
+
+
+            <!-- CURRENT STATUS -->
 
             <div class="card">
 
@@ -129,39 +196,105 @@
 
                 <table>
 
-                    <tr>
-                        <td>Risk Level</td>
-                        <td id="riskLevel">
-                            <span class="safe">LOW</span>
-                        </td>
-                    </tr>
+                    <!-- Risk Level -->
 
                     <tr>
-                        <td>ESP32 Status</td>
-                        <td id="espStatus">
-                            Connected
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <td>Firebase</td>
                         <td>
+                            Risk Level
+                        </td>
+
+                        <td id="riskLevel">
+
+                            <span class="safe">
+                                LOW
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Repositioning Alert -->
+
+                    <tr>
+
+                        <td>
+                            Repositioning Alert
+                        </td>
+
+                        <td id="repositionAlert">
+
+                            <span class="safe">
+                                NORMAL
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- ESP32 -->
+
+                    <tr>
+
+                        <td>
+                            ESP32 Status
+                        </td>
+
+                        <td id="espStatus">
+                            Waiting...
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Last Updated -->
+
+                    <tr>
+
+                        <td>
+                            Last Updated
+                        </td>
+
+                        <td id="lastUpdated">
+                            Waiting...
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Firebase -->
+
+                    <tr>
+
+                        <td>
+                            Firebase
+                        </td>
+
+                        <td id="firebaseStatus">
                             Connected
                         </td>
+
                     </tr>
 
                 </table>
 
             </div>
 
+
+            <!-- PRESSURE INDICATOR -->
+
             <div class="card">
 
-                <h2>Pressure Indicator</h2>
+                <h2>
+                    Pressure Indicator
+                </h2>
 
                 <div class="progress-circle">
 
                     <span id="pressureValue">
-                        65%
+                        0
                     </span>
 
                 </div>
@@ -170,11 +303,14 @@
 
         </section>
 
-        <!-- Position History -->
+
+        <!-- ================= POSITION HISTORY ================= -->
 
         <section class="history-card">
 
-            <h2>Recent Position History</h2>
+            <h2>
+                Recent Position History
+            </h2>
 
             <table>
 
@@ -182,25 +318,38 @@
 
                     <tr>
 
-                        <th>Time</th>
+                        <th>
+                            Time
+                        </th>
 
-                        <th>Position</th>
+                        <th>
+                            Position
+                        </th>
 
-                        <th>Status</th>
+                        <th>
+                            Status
+                        </th>
 
                     </tr>
 
                 </thead>
 
+
                 <tbody id="historyTable">
 
                     <tr>
 
-                        <td>09:00 AM</td>
+                        <td>
+                            --
+                        </td>
 
-                        <td>Left Side</td>
+                        <td>
+                            Sensor Testing
+                        </td>
 
-                        <td>Safe</td>
+                        <td>
+                            Waiting
+                        </td>
 
                     </tr>
 
@@ -214,7 +363,12 @@
 
 </div>
 
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script type="module" src="js/monitoring.js"></script>
 
 </body>
+
 </html>
+```

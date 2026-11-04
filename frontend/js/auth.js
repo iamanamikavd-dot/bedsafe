@@ -2,7 +2,8 @@ import { auth, database } from "./firebase-config.js";
 
 import {
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 import {
@@ -10,7 +11,11 @@ import {
     set
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
-// Register User
+
+// ============================
+// REGISTER USER
+// ============================
+
 export async function registerUser(fullName, email, phone, password) {
 
     const userCredential = await createUserWithEmailAndPassword(
@@ -22,17 +27,23 @@ export async function registerUser(fullName, email, phone, password) {
     const user = userCredential.user;
 
     await set(ref(database, "users/" + user.uid), {
+
         uid: user.uid,
         fullName: fullName,
         email: email,
         phone: phone,
         createdAt: new Date().toISOString()
+
     });
 
     return user;
 }
 
-// Login User
+
+// ============================
+// LOGIN USER
+// ============================
+
 export async function loginUser(email, password) {
 
     const userCredential = await signInWithEmailAndPassword(
@@ -43,11 +54,14 @@ export async function loginUser(email, password) {
 
     return userCredential.user;
 }
-import {
-    signOut
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-// Logout User
+
+// ============================
+// LOGOUT USER
+// ============================
+
 export async function logoutUser() {
+
     await signOut(auth);
+
 }

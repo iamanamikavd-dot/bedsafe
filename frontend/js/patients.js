@@ -1,144 +1,235 @@
-import { database } from "./firebase-config.js";
+/* ==========================================
+   BEDSAFE - ADD PATIENT
+   User-specific Firebase Patient Storage
+========================================== */
+
+import { auth, database } from "./firebase-config.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 import {
     ref,
     push,
-    get,
-    update
+    set
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
-// ==========================================
-// BedSafe - Add / Edit Patient
-// ==========================================
 
-document.addEventListener("DOMContentLoaded", () => {
+/* ==========================================
+   GET FORM
+========================================== */
 
-    const patientForm = document.getElementById("patientForm");
+const patientForm = document.getElementById("patientForm");
 
-    const saveBtn = document.querySelector(".save-btn");
 
-    // Check if editing
-    const editPatientId = localStorage.getItem("editPatientId");
+/* ==========================================
+   CHECK LOGIN STATUS
+========================================== */
 
-    // ==========================
-    // LOAD PATIENT DETAILS
-    // ==========================
+let currentUser = null;
 
-    if (editPatientId) {
+onAuthStateChanged(auth, (user) => {
 
-        saveBtn.innerHTML = `
-            <i class="fa-solid fa-pen"></i>
-            Update Patient
-        `;
+    if (user) {
 
-        get(ref(database, "patients/" + editPatientId))
-            .then((snapshot) => {
+        currentUser = user;
 
-                if (snapshot.exists()) {
+        console.log("Logged-in user:", currentUser.email);
+        console.log("User UID:", currentUser.uid);
 
-                    const patient = snapshot.val();
+    } else {
 
-                    document.getElementById("patientName").value = patient.patientName;
-                    document.getElementById("age").value = patient.age;
-                    document.getElementById("gender").value = patient.gender;
-                    document.getElementById("weight").value = patient.weight;
-                    document.getElementById("caregiver").value = patient.caregiver;
-                    document.getElementById("phone").value = patient.phone;
-                    document.getElementById("address").value = patient.address;
-                    document.getElementById("emergency").value = patient.emergency;
+        currentUser = null;
 
-                }
+        console.log("No user is logged in.");
 
-            });
-
+        // Redirect to login page
+        window.location.href = "login.html";
     }
 
-    // ==========================
-    // SAVE / UPDATE
-    // ==========================
+});
 
-    patientForm.addEventListener("submit", async function (e) {
 
-        e.preventDefault();
+/* ==========================================
+   ADD PATIENT
+========================================== */
 
-        const patientName = document.getElementById("patientName").value.trim();
-        const age = document.getElementById("age").value.trim();
-        const gender = document.getElementById("gender").value;
-        const weight = document.getElementById("weight").value.trim();
-        const caregiver = document.getElementById("caregiver").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-        const address = document.getElementById("address").value.trim();
-        const emergency = document.getElementById("emergency").value.trim();
+if (patientForm) {
 
-        if (
-            patientName === "" ||
-            age === "" ||
-            gender === "" ||
-            weight === "" ||
-            caregiver === "" ||
-            phone === ""
-        ) {
-            alert("Please fill in all required fields.");
+    patientForm.addEventListener("submit", async (event) => {
+
+        event.preventDefault();
+
+
+        /* --------------------------------------
+           CHECK LOGIN
+        -------------------------------------- */
+
+        if (!currentUser) {
+
+            alert("Please login before adding a patient.");
+
             return;
         }
 
-        const patient = {
-            patientName,
-            age,
-            gender,
-            weight,
-            caregiver,
-            phone,
-            address,
-            emergency,
-            status: "Monitoring",
-            createdAt: new Date().toISOString()
+
+        /* --------------------------------------
+           GET FORM VALUES
+        -------------------------------------- */
+
+        const patientName =
+            document.getElementById("patientName")?.value.trim();
+
+        const patientAge =
+            document.getElementById("patientAge")?.value.trim();
+
+        const patientGender =
+            document.getElementById("patientGender")?.value;
+
+        const caregiverName =
+            document.getElementById("caregiverName")?.value.trim();
+
+        const patientStatus =
+            document.getElementById("patientStatus")?.value || "Monitoring";
+
+
+        /* --------------------------------------
+           VALIDATION
+        -------------------------------------- */
+
+        if (!patientName) {
+
+            alert("Please enter patient name.");
+
+            return;
+        }
+
+
+        if (!patientAge) {
+
+            alert("Please enter patient age.");
+
+            return;
+        }
+
+
+        if (!patientGender) {
+
+            alert("Please select patient gender.");
+
+            return;
+        }
+
+
+        if (!caregiverName) {
+
+            alert("Please enter caregiver name.");
+
+            return;
+        }
+
+
+        /* --------------------------------------
+           USER UID
+        -------------------------------------- */
+
+        const uid = currentUser.uid;
+
+
+        /* --------------------------------------
+           CREATE PATIENT ID
+        -------------------------------------- */
+
+        const patientsRef = ref(
+            database,
+            `users/${uid}/patients`
+        );
+
+        const newPatientRef = push(patientsRef);
+
+        const patientId = newPatientRef.key;
+
+
+        /* --------------------------------------
+           PATIENT DATA
+        -------------------------------------- */
+
+        const patientData = {
+
+            patientId: patientId,
+
+            patientName: patientName,
+
+            patientAge: Number(patientAge),
+
+            patientGender: patientGender,
+
+            caregiverName: caregiverName,
+
+            status: patientStatus,
+
+            createdAt: new Date().toISOString(),
+
+            createdBy: uid
+
         };
+
+
+        /* --------------------------------------
+           SAVE TO FIREBASE
+           
+           IMPORTANT:
+           
+           users
+             └── UID
+                  └── patients
+                       └── patientID
+        -------------------------------------- */
 
         try {
 
-            // ==========================
-            // UPDATE
-            // ==========================
+            await set(
+                newPatientRef,
+                patientData
+            );
 
-            if (editPatientId) {
 
-                await update(
-                    ref(database, "patients/" + editPatientId),
-                    patient
-                );
+            /* ----------------------------------
+               SUCCESS
+            ---------------------------------- */
 
-                alert("Patient updated successfully.");
+            alert("Patient added successfully!");
 
-                localStorage.removeItem("editPatientId");
 
-            }
-
-            // ==========================
-            // ADD NEW
-            // ==========================
-
-            else {
-
-                await push(
-                    ref(database, "patients"),
-                    patient
-                );
-
-                alert("Patient added successfully.");
-
-            }
+            /* ----------------------------------
+               RESET FORM
+            ---------------------------------- */
 
             patientForm.reset();
 
+
+            /* ----------------------------------
+               OPTIONAL REDIRECT
+            ---------------------------------- */
+
             window.location.href = "view-patients.html";
+
 
         } catch (error) {
 
-            alert("Error: " + error.message);
+            console.error(
+                "Error adding patient:",
+                error
+            );
+
+            alert(
+                "Failed to add patient.\n\n" +
+                error.message
+            );
 
         }
 
     });
 
-});
+}

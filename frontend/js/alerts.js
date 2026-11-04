@@ -17,7 +17,52 @@ document.addEventListener("DOMContentLoaded", () => {
     const tableBody = document.getElementById("alertTable");
     const searchInput = document.getElementById("searchAlert");
 
+    // ==========================================
+    // Calculate Risk
+    // ==========================================
+
+    function getRisk(pressure) {
+
+        pressure = Number(pressure) || 0;
+
+        if (pressure < 500) {
+            return "Low";
+        }
+
+        else if (pressure < 1500) {
+            return "Medium";
+        }
+
+        else {
+            return "High";
+        }
+    }
+
+
+    // ==========================================
+    // Format Time
+    // ==========================================
+
+    function formatTime(time) {
+
+        if (!time) {
+            return "--";
+        }
+
+        const date = new Date(time);
+
+        if (isNaN(date.getTime())) {
+            return time;
+        }
+
+        return date.toLocaleString();
+    }
+
+
+    // ==========================================
     // Display Alerts
+    // ==========================================
+
     function displayAlerts(alertList) {
 
         tableBody.innerHTML = "";
@@ -35,44 +80,62 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        alertList.forEach((alert, index) => {
+
+        alertList.forEach((alert) => {
+
+            const pressure = Number(alert.pressure) || 0;
+
+            const risk = getRisk(pressure);
 
             let riskClass = "low";
 
-            if (alert.risk === "High")
+            if (risk === "High") {
                 riskClass = "high";
+            }
 
-            else if (alert.risk === "Medium")
+            else if (risk === "Medium") {
                 riskClass = "medium";
+            }
 
-            let statusClass =
-                alert.status === "Completed"
+
+            const status =
+                alert.status || "Pending";
+
+            const statusClass =
+                status === "Completed"
                 ? "completed"
                 : "pending";
+
 
             tableBody.innerHTML += `
 
                 <tr>
 
-                    <td>${alert.patientName}</td>
-
-                    <td>${alert.pressure}%</td>
-
-                    <td class="${riskClass}">
-                        ${alert.risk}
+                    <td>
+                        ${alert.patientName || "Unknown"}
                     </td>
 
-                    <td>${alert.time}</td>
+                    <td>
+                        ${pressure}
+                    </td>
+
+                    <td class="${riskClass}">
+                        ${risk}
+                    </td>
+
+                    <td>
+                        ${formatTime(alert.time)}
+                    </td>
 
                     <td class="${statusClass}">
-                        ${alert.status}
+                        ${status}
                     </td>
 
                     <td>
 
                         <button
                             class="view"
-                            onclick="viewAlert(${index})">
+                            onclick="viewAlert('${alert.id}')">
 
                             <i class="fa-solid fa-eye"></i>
 
@@ -80,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         <button
                             class="delete"
-                            onclick="deleteAlert(${index})">
+                            onclick="deleteAlert('${alert.id}')">
 
                             <i class="fa-solid fa-trash"></i>
 
@@ -96,43 +159,96 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
+    // ==========================================
     // Read Alerts from Firebase
+    // ==========================================
 
-    const alertsRef = ref(database, "alerts");
+    const alertsRef = ref(database, "alertHistory");
 
-    onValue(alertsRef, (snapshot) => {
+    onValue(
+        alertsRef,
 
-        alerts = [];
+        (snapshot) => {
 
-        snapshot.forEach((childSnapshot) => {
+            alerts = [];
 
-            alerts.push({
+            snapshot.forEach((childSnapshot) => {
 
-                id: childSnapshot.key,
+                alerts.push({
 
-                ...childSnapshot.val()
+                    id: childSnapshot.key,
+
+                    ...childSnapshot.val()
+
+                });
 
             });
 
-        });
+            // Latest alerts first
+            alerts.reverse();
 
-        displayAlerts(alerts);
+            displayAlerts(alerts);
 
-    });
+        },
 
+        (error) => {
+
+            console.error(
+                "Error loading alerts:",
+                error
+            );
+
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align:center;">
+                        Error loading alerts.
+                    </td>
+                </tr>
+            `;
+
+        }
+    );
+
+
+    // ==========================================
     // Search Alerts
+    // ==========================================
 
     searchInput.addEventListener("keyup", function () {
 
-        const value = this.value.toLowerCase();
+        const value =
+            this.value.toLowerCase().trim();
 
-        const filtered = alerts.filter(alert =>
 
-            alert.patientName.toLowerCase().includes(value) ||
+        const filtered = alerts.filter(alert => {
 
-            alert.risk.toLowerCase().includes(value)
+            const patientName =
+                String(alert.patientName || "")
+                .toLowerCase();
 
-        );
+            const pressure =
+                String(alert.pressure || "")
+                .toLowerCase();
+
+            const risk =
+                getRisk(alert.pressure)
+                .toLowerCase();
+
+            const status =
+                String(alert.status || "")
+                .toLowerCase();
+
+
+            return (
+                patientName.includes(value) ||
+                pressure.includes(value) ||
+                risk.includes(value) ||
+                status.includes(value)
+            );
+
+        });
+
 
         displayAlerts(filtered);
 
@@ -140,50 +256,125 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
+// ==========================================
 // View Alert
+// ==========================================
 
-window.viewAlert = function(index) {
+window.viewAlert = function(alertId) {
 
-    const alert = alerts[index];
+    const selectedAlert =
+        alerts.find(alert => alert.id === alertId);
+
+
+    if (!selectedAlert) {
+        alert("Alert not found.");
+        return;
+    }
+
+
+    const pressure =
+        Number(selectedAlert.pressure) || 0;
+
+    const risk =
+        getRiskForView(pressure);
+
 
     alert(
 
-`Patient : ${alert.patientName}
+`Patient : ${selectedAlert.patientName || "Unknown"}
 
-Pressure : ${alert.pressure}%
+Pressure : ${pressure}
 
-Risk : ${alert.risk}
+Risk : ${risk}
 
-Time : ${alert.time}
+Time : ${formatTimeForView(selectedAlert.time)}
 
-Status : ${alert.status}`
+Status : ${selectedAlert.status || "Pending"}`
 
     );
 
 };
 
-// Delete Alert
 
-window.deleteAlert = async function(index) {
+// ==========================================
+// Helper for View Alert
+// ==========================================
+
+function getRiskForView(pressure) {
+
+    if (pressure < 500) {
+        return "Low";
+    }
+
+    else if (pressure < 1500) {
+        return "Medium";
+    }
+
+    else {
+        return "High";
+    }
+
+}
+
+
+function formatTimeForView(time) {
+
+    if (!time) {
+        return "--";
+    }
+
+    const date = new Date(time);
+
+    if (isNaN(date.getTime())) {
+        return time;
+    }
+
+    return date.toLocaleString();
+
+}
+
+
+// ==========================================
+// Delete Alert
+// ==========================================
+
+window.deleteAlert = async function(alertId) {
 
     const confirmDelete =
         confirm("Delete this alert?");
 
-    if (!confirmDelete) return;
+
+    if (!confirmDelete) {
+        return;
+    }
+
 
     try {
 
-        const alertId = alerts[index].id;
+        await remove(
+            ref(
+                database,
+                "alertHistory/" + alertId
+            )
+        );
 
-        await remove(ref(database, "alerts/" + alertId));
 
         alert("Alert deleted successfully.");
 
     }
 
-    catch(error){
+    catch (error) {
 
-        alert(error.message);
+        console.error(
+            "Delete error:",
+            error
+        );
+
+        alert(
+            "Unable to delete alert: " +
+            error.message
+        );
 
     }
 

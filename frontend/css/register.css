@@ -1,6 +1,11 @@
 /* ==========================================
    BedSafe Register Page
-   Part 1 - Global Styles
+   Complete CSS
+========================================== */
+
+
+/* ==========================================
+   GLOBAL STYLES
 ========================================== */
 
 *{
@@ -25,9 +30,10 @@ body{
 
 }
 
-/* ==========================
-        HEADER
-========================== */
+
+/* ==========================================
+   HEADER
+========================================== */
 
 header{
 
@@ -99,9 +105,10 @@ header{
 
 }
 
-/* ==========================
-      MAIN CONTAINER
-========================== */
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
 
 .register-container{
 
@@ -117,13 +124,18 @@ header{
 
 }
 
-/* ==========================
-      LEFT PANEL
-========================== */
+
+/* ==========================================
+   LEFT PANEL
+========================================== */
 
 .left-panel{
 
-    background:linear-gradient(135deg,#163832,#3E7C6B);
+    background:linear-gradient(
+        135deg,
+        #163832,
+        #3E7C6B
+    );
 
     color:white;
 
@@ -175,7 +187,10 @@ header{
 
 }
 
-/* Floating Animation */
+
+/* ==========================================
+   FLOATING ANIMATION
+========================================== */
 
 @keyframes float{
 
@@ -199,9 +214,10 @@ header{
 
 }
 
-/* ==========================
-      RIGHT PANEL
-========================== */
+
+/* ==========================================
+   RIGHT PANEL
+========================================== */
 
 .right-panel{
 
@@ -254,6 +270,8 @@ header{
     font-size:16px;
 
 }
+
+
 /* ==========================================
    INPUT FIELDS
 ========================================== */
@@ -318,6 +336,65 @@ header{
 
 }
 
+
+/* ==========================================
+   VALIDATION INPUT STYLES
+========================================== */
+
+.input-box input.input-error{
+
+    border-color:#d93025 !important;
+
+    background:#fff8f8;
+
+}
+
+.input-box input.input-error:focus{
+
+    border-color:#d93025 !important;
+
+    box-shadow:0 0 0 4px rgba(217,48,37,.12);
+
+}
+
+.input-box input.input-success{
+
+    border-color:#3E7C6B;
+
+}
+
+
+/* ==========================================
+   FIELD ERROR MESSAGE
+========================================== */
+
+.field-error{
+
+    display:block;
+
+    min-height:18px;
+
+    margin-top:6px;
+
+    color:#d93025;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    line-height:1.4;
+
+}
+
+.terms-error{
+
+    margin-top:-22px;
+
+    margin-bottom:15px;
+
+}
+
+
 /* ==========================================
    PASSWORD ICON
 ========================================== */
@@ -358,6 +435,7 @@ header{
 
 }
 
+
 /* ==========================================
    CHECKBOX
 ========================================== */
@@ -370,7 +448,7 @@ header{
 
     gap:10px;
 
-    margin:20px 0 30px;
+    margin:20px 0 5px;
 
 }
 
@@ -412,6 +490,54 @@ header{
 
 }
 
+
+/* ==========================================
+   SUCCESS / ERROR MESSAGE
+========================================== */
+
+.message{
+
+    margin:15px 0;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    text-align:center;
+
+    font-size:15px;
+
+    line-height:1.5;
+
+    display:none;
+
+}
+
+.message.success{
+
+    display:block;
+
+    background:#d4edda;
+
+    color:#155724;
+
+    border:1px solid #c3e6cb;
+
+}
+
+.message.error{
+
+    display:block;
+
+    background:#f8d7da;
+
+    color:#721c24;
+
+    border:1px solid #f5c6cb;
+
+}
+
+
 /* ==========================================
    REGISTER BUTTON
 ========================================== */
@@ -450,6 +576,13 @@ header{
 
 }
 
+.register-btn:active{
+
+    transform:scale(.98);
+
+}
+
+
 /* ==========================================
    LOGIN LINK
 ========================================== */
@@ -481,11 +614,11 @@ header{
     text-decoration:underline;
 
 }
-/* ==========================================
-   PART 3 - ANIMATIONS & RESPONSIVE
-========================================== */
 
-/* Form Animation */
+
+/* ==========================================
+   FORM ANIMATION
+========================================== */
 
 .form-box{
 
@@ -539,6 +672,7 @@ header{
 
 }
 
+
 /* ==========================================
    HOVER EFFECTS
 ========================================== */
@@ -560,6 +694,7 @@ header{
     transition:.4s;
 
 }
+
 
 /* ==========================================
    SCROLLBAR
@@ -591,49 +726,51 @@ header{
 
 }
 
+
 /* ==========================================
    TABLET
 ========================================== */
 
 @media(max-width:992px){
 
-.register-container{
+    .register-container{
 
-    grid-template-columns:1fr;
+        grid-template-columns:1fr;
+
+    }
+
+    .left-panel{
+
+        padding:60px 30px;
+
+    }
+
+    .left-panel img{
+
+        max-width:300px;
+
+    }
+
+    .left-panel h1{
+
+        font-size:38px;
+
+    }
+
+    .right-panel{
+
+        padding:40px 20px;
+
+    }
+
+    .form-box{
+
+        max-width:600px;
+
+    }
 
 }
 
-.left-panel{
-
-    padding:60px 30px;
-
-}
-
-.left-panel img{
-
-    max-width:300px;
-
-}
-
-.left-panel h1{
-
-    font-size:38px;
-
-}
-
-.right-panel{
-
-    padding:40px 20px;
-
-}
-
-.form-box{
-
-    max-width:600px;
-
-}
-
-}
 
 /* ==========================================
    MOBILE
@@ -641,113 +778,114 @@ header{
 
 @media(max-width:768px){
 
-header{
+    header{
 
-    height:70px;
+        height:70px;
 
-    padding:0 20px;
+        padding:0 20px;
+
+    }
+
+    .logo{
+
+        font-size:24px;
+
+    }
+
+    .logo i{
+
+        width:42px;
+
+        height:42px;
+
+        font-size:18px;
+
+    }
+
+    .register-container{
+
+        padding-top:70px;
+
+    }
+
+    .left-panel{
+
+        padding:40px 20px;
+
+    }
+
+    .left-panel img{
+
+        max-width:220px;
+
+    }
+
+    .left-panel h1{
+
+        font-size:30px;
+
+    }
+
+    .left-panel p{
+
+        font-size:15px;
+
+    }
+
+    .right-panel{
+
+        padding:25px 15px;
+
+    }
+
+    .form-box{
+
+        padding:30px 22px;
+
+    }
+
+    .form-box h2{
+
+        font-size:30px;
+
+    }
+
+    .subtitle{
+
+        font-size:14px;
+
+    }
+
+    .input-box input{
+
+        height:50px;
+
+        font-size:15px;
+
+    }
+
+    .register-btn{
+
+        height:52px;
+
+        font-size:16px;
+
+    }
+
+    .checkbox{
+
+        align-items:flex-start;
+
+    }
+
+    .checkbox label{
+
+        font-size:14px;
+
+    }
 
 }
 
-.logo{
-
-    font-size:24px;
-
-}
-
-.logo i{
-
-    width:42px;
-
-    height:42px;
-
-    font-size:18px;
-
-}
-
-.register-container{
-
-    padding-top:70px;
-
-}
-
-.left-panel{
-
-    padding:40px 20px;
-
-}
-
-.left-panel img{
-
-    max-width:220px;
-
-}
-
-.left-panel h1{
-
-    font-size:30px;
-
-}
-
-.left-panel p{
-
-    font-size:15px;
-
-}
-
-.right-panel{
-
-    padding:25px 15px;
-
-}
-
-.form-box{
-
-    padding:30px 22px;
-
-}
-
-.form-box h2{
-
-    font-size:30px;
-
-}
-
-.subtitle{
-
-    font-size:14px;
-
-}
-
-.input-box input{
-
-    height:50px;
-
-    font-size:15px;
-
-}
-
-.register-btn{
-
-    height:52px;
-
-    font-size:16px;
-
-}
-
-.checkbox{
-
-    align-items:flex-start;
-
-}
-
-.checkbox label{
-
-    font-size:14px;
-
-}
-
-}
 
 /* ==========================================
    SMALL MOBILE
@@ -755,78 +893,39 @@ header{
 
 @media(max-width:480px){
 
-.left-panel h1{
+    .left-panel h1{
 
-    font-size:26px;
+        font-size:26px;
 
-}
+    }
 
-.form-box{
+    .form-box{
 
-    padding:25px 18px;
+        padding:25px 18px;
 
-}
+    }
 
-.form-box h2{
+    .form-box h2{
 
-    font-size:26px;
+        font-size:26px;
 
-}
+    }
 
-.input-box label{
+    .input-box label{
 
-    font-size:14px;
+        font-size:14px;
 
-}
+    }
 
-.register-btn{
+    .register-btn{
 
-    font-size:15px;
+        font-size:15px;
 
-}
-
-}
-
-/* ==========================================
-   ACTIVE INPUT EFFECT
-========================================== */
-
-.input-box input:valid{
-
-    border-color:#3E7C6B;
+    }
 
 }
 
-/* ==========================================
-   BUTTON CLICK EFFECT
-========================================== */
-
-.register-btn:active{
-
-    transform:scale(.98);
-
-}
 
 /* ==========================================
    END OF FILE
 ========================================== */
-.message{
-    margin:15px 0;
-    padding:12px;
-    border-radius:8px;
-    text-align:center;
-    font-size:15px;
-    display:none;
-}
-
-.message.success{
-    background:#d4edda;
-    color:#155724;
-    border:1px solid #c3e6cb;
-}
-
-.message.error{
-    background:#f8d7da;
-    color:#721c24;
-    border:1px solid #f5c6cb;
-}
