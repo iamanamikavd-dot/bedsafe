@@ -1,0 +1,5 @@
+#define WIFI_SSID      "anamika"
+#define WIFI_PASSWORD  "12345678"
+#define API_KEY        "AIzaSyBxWr0n1fWltP4vJN0O7bT66pEbq2nle9c"
+#define USER_EMAIL     "iamanamikavd@gmail.com"
+#define USER_PASSWORD  "12345678"

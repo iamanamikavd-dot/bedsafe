@@ -10,15 +10,7 @@
 // ==================================================
 // 1. WIFI SETTINGS
 // ==================================================
-#define WIFI_SSID       "Atheena"
-#define WIFI_PASSWORD   "atheena2003"
-
-// ==================================================
-// 2. FIREBASE SETTINGS
-// ==================================================
-#define API_KEY         "AIzaSyBxWr0n1fWltP4vJN0O7bT66pEbq2nle9c"
-#define USER_EMAIL      "iamanamikavd@gmail.com"
-#define USER_PASSWORD   "12345678"
+#include "secrets.h"
 
 #define DATABASE_URL \
 "https://bedsafe-a2e0b-default-rtdb.asia-southeast1.firebasedatabase.app/"
